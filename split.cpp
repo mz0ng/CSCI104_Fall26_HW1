@@ -18,6 +18,24 @@ void split(Node*& in, Node*& odds, Node*& evens)
 {
   /* Add code here */
 // WRITE YOUR CODE HERE
+  if (in == nullptr) {
+    return;
+  }
+
+  // head recursive call
+  split(in->next, odds, evens);
+
+  // check if node is even or odd
+  if (in->value % 2 == 0) {
+    in->next = evens;
+    evens = in;
+  } else {
+    in->next = odds;
+    odds = in;
+  }
+
+  // make sure in becomes null
+  in = nullptr;
 }
 
 /* If you needed a helper function, write it here */
